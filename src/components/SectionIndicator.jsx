@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { FaHome, FaUser, FaCode, FaBriefcase, FaProjectDiagram, FaGraduationCap, FaHeart, FaEnvelope } from 'react-icons/fa';
 
@@ -21,7 +21,7 @@ const SectionIndicator = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 100;
-      
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i].id);
         if (section && section.offsetTop <= scrollPosition) {
@@ -33,7 +33,7 @@ const SectionIndicator = () => {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -65,14 +65,13 @@ const SectionIndicator = () => {
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent/20 to-accentPurple/20 blur-md -z-10" />
                 </div>
               )}
-              
+
               {/* Dot indicator */}
               <div
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                  activeSection === section.id
-                    ? 'bg-gradient-to-r from-accent to-accentPurple shadow-lg shadow-accent/50 scale-125'
-                    : 'bg-gray-500 group-hover:bg-gray-400'
-                }`}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${activeSection === section.id
+                  ? 'bg-gradient-to-r from-accent to-accentPurple shadow-lg shadow-accent/50 scale-125'
+                  : 'bg-gray-500 group-hover:bg-gray-400'
+                  }`}
               />
             </Link>
           ))}

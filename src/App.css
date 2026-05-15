@@ -1,0 +1,15 @@
+.App {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Smooth scrolling for all sections */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Prevent horizontal scroll */
+body, html {
+  overflow-x: hidden;
+  max-width: 100vw;
+}

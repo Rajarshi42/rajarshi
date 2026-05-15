@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-scroll';
 import { FaHome, FaUser, FaCode, FaBriefcase, FaProjectDiagram, FaGraduationCap, FaHeart, FaEnvelope } from 'react-icons/fa';
 
@@ -6,7 +6,7 @@ const SectionIndicator = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const [hoveredSection, setHoveredSection] = useState(null);
 
-  const sections = [
+  const sections = useMemo(() => [
     { name: 'Home', id: 'hero', icon: <FaHome /> },
     { name: 'About', id: 'about', icon: <FaUser /> },
     { name: 'Skills', id: 'skills', icon: <FaCode /> },
@@ -15,7 +15,7 @@ const SectionIndicator = () => {
     { name: 'Education', id: 'education', icon: <FaGraduationCap /> },
     { name: 'Interests', id: 'interests', icon: <FaHeart /> },
     { name: 'Contact', id: 'contact', icon: <FaEnvelope /> },
-  ];
+  ], []);
 
   // Listen to scroll events to update active section
   useEffect(() => {
@@ -35,7 +35,7 @@ const SectionIndicator = () => {
     handleScroll(); // Initial check
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [sections]);
 
   return (
     <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block">
